@@ -24,7 +24,7 @@ RUN gradle build -x findbugsMain -x test -x rat -x checkstyleMain -x javadoc -x 
     tar -xvf ./build/gobblin-distribution/distributions/*.tar.gz && \
     rm *.tar.gz
 
-FROM eclipse-temurin:8-jre-alpine
+FROM amazoncorretto:8-alpine
 WORKDIR /home/gobblin/
 COPY ./gobblin-docker/gobblin/alpine-gobblin-latest/entrypoint.sh ./bin/entrypoint.sh
 COPY --from=build /home/gobblin/gobblin-dist .
